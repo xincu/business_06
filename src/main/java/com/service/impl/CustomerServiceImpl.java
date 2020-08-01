@@ -7,6 +7,9 @@ import com.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -18,5 +21,35 @@ public class CustomerServiceImpl implements CustomerService {
         customer c = customerMapper.selectByPrimaryKey(14L);
 
         System.out.println(c);
+    }
+
+    @Override
+    public HashMap<Object, Object> showPage(customer customer, int pageNum) {
+        int  pageSize=10;
+        int customCount =customerMapper.count();
+        System.out.println("总记录数："+customCount);
+        int maxPage=customCount/pageSize;
+        if(customCount%pageSize>0){
+            maxPage++;
+        }
+        if (pageNum>maxPage){
+            pageNum=maxPage;
+        }
+        if (pageNum<1){
+            pageNum=1;
+        }
+        int  start=pageNum*pageSize-pageSize;
+        String custLevel = customer.getCustLevel();
+        String custIndustry = customer.getCustIndustry();
+        String custName = customer.getCustName();
+        String custSource = customer.getCustSource();
+        List<customer> customerList=customerMapper.selectMany(custName,custSource,custIndustry,custLevel,start,pageSize);
+
+
+
+        HashMap<Object,Object> map2=new HashMap<Object,Object>() ;
+        map2.put("list",customerList);
+        map2.put("pageNum",pageNum);
+        return map2;
     }
 }

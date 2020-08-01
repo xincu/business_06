@@ -16,18 +16,18 @@ import java.util.List;
 public class BaseDictController {
     @Autowired
     private BaseDictService baseDictService;
-   /* @Value("#{customer.dict.source}")
+    @Value("${customer.dict.source}")
     String source;
-    @Value("#{customer.dict.industry}")
-     String industry;
-    @Value("#{customer.dict.level}")
-    String level;*/
+    @Value("${customer.dict.industry}")
+    String industry;
+    @Value("${customer.dict.level}")
+    String level;
 
-    String source ="002";
+    /*String source ="002";
 
     String industry="001";
 
-    String level="006";
+    String level="006";*/
 
 
     @RequestMapping("/list")
@@ -41,10 +41,9 @@ public class BaseDictController {
         hs.put("dictSource", dictSourceList);
         hs.put("dictIndustry", dictIndustryList);
         hs.put("dictLevel", dictLevelList);
-        model.addAttribute("name",hs);
+        model.addAttribute("name", hs);
         return "show";
     }
-
 
    /* @RequestMapping("/source")
     public String source(String dictTypeCode){
