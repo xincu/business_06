@@ -8,5 +8,7 @@ import java.util.List;
 @Repository
 public interface BaseDictMapper {
 
-    List<base_dict> source(String dictTypeName);
+    List<base_dict> source(String dictTypeCode);
+
+
 }

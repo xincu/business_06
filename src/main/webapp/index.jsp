@@ -18,7 +18,7 @@
     <input type="submit" value="新增提交">
 </form>
 <%--获取用户来源列表--%>
-<form  method="post" action="/source">
+<form  method="post" action="/list">
     <input type="submit" value="展示来源列表">
 
 </form>

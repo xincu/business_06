@@ -1,6 +1,21 @@
 package com.model;
 
 public class base_dict {
+
+    @Override
+    public String toString() {
+        return "base_dict{" +
+                "dictId='" + dictId + '\'' +
+                ", dictTypeCode='" + dictTypeCode + '\'' +
+                ", dictTypeName='" + dictTypeName + '\'' +
+                ", dictItemName='" + dictItemName + '\'' +
+                ", dictItemCode='" + dictItemCode + '\'' +
+                ", dictSort=" + dictSort +
+                ", dictEnable='" + dictEnable + '\'' +
+                ", dictMemo='" + dictMemo + '\'' +
+                '}';
+    }
+
     private String dictId;
 
     private String dictTypeCode;

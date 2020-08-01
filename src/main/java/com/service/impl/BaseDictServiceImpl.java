@@ -14,8 +14,8 @@ public class BaseDictServiceImpl  implements BaseDictService {
     @Autowired
     private BaseDictMapper baseDictMapper;
     @Override
-    public List<base_dict> source() {
-        String dictTypeName="客户信息来源";
-        return baseDictMapper.source(dictTypeName);
+    public List<base_dict> source(String dictTypeCode) {
+
+        return baseDictMapper.source(dictTypeCode);
     }
 }
