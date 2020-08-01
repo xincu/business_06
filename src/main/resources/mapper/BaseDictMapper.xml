@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.BaseDictMapper">
+  <resultMap id="BaseResultMap" type="com.model.base_dict">
+    <id column="dict_id" jdbcType="VARCHAR" property="dictId" />
+    <result column="dict_type_code" jdbcType="VARCHAR" property="dictTypeCode" />
+    <result column="dict_type_name" jdbcType="VARCHAR" property="dictTypeName" />
+    <result column="dict_item_name" jdbcType="VARCHAR" property="dictItemName" />
+    <result column="dict_item_code" jdbcType="VARCHAR" property="dictItemCode" />
+    <result column="dict_sort" jdbcType="INTEGER" property="dictSort" />
+    <result column="dict_enable" jdbcType="CHAR" property="dictEnable" />
+    <result column="dict_memo" jdbcType="VARCHAR" property="dictMemo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dict_id, dict_type_code, dict_type_name, dict_item_name, dict_item_code, dict_sort, 
+    dict_enable, dict_memo
+  </sql>
+ <select id="source" resultMap="BaseResultMap" parameterType="String">
+   select dict_item_name from  base_dict where dict_type_name=#{dictTypeName}
+
+
+ </select>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CustomerMapper" >
+
+    <resultMap id="baseResultMap" type="com.model.customer">
+        <id  column="cust_id " property="custId" jdbcType="BIGINT"  ></id>
+     <result column="cust_name" property="custName" jdbcType="VARCHAR"></result>
+        <result column="cust_user_id" property="custUserId" jdbcType="BIGINT"></result>
+        <result column="cust_create_id" property="custCreateId" jdbcType="BIGINT"></result>
+        <result column="cust_source" property="custSource" jdbcType="VARCHAR"></result>
+        <result column="cust_industry" property="custIndustry" jdbcType="VARCHAR"></result>
+        <result column="cust_level" property="custLevel" jdbcType="VARCHAR"></result>
+        <result column="cust_linkman" property="custLinkman" jdbcType="VARCHAR"></result>
+        <result column="cust_phone" property="custPhone" jdbcType="VARCHAR"></result>
+        <result column="cust_mobile" property="custMobile" jdbcType="VARCHAR"></result>
+        <result column="cust_zipcode" property="custZipcode" jdbcType="VARCHAR"></result>
+        <result column="cust_address" property="custAddress" jdbcType="VARCHAR"></result>
+        <result column="cust_createtime" property="custCreatetime" jdbcType="TIMESTAMP"></result>
+
+    </resultMap>
+    <select id="selectByPrimaryKey" resultMap="baseResultMap" parameterType="long">
+        select *  from  customer  where cust_id = #{custId}
+    </select>
+</mapper>
