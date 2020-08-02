@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println(c);
     }
 
-    @Override
+  /*  @Override
     public HashMap<Object, Object> showPage(customer customer , int pageNum, int pageSize) {
         int customCount =customerMapper.count();
         System.out.println("总记录数："+customCount);
@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
         map2.put("list",customerList);
         map2.put("pageNum",pageNum);
         return map2;
-    }
+    }*/
 
     @Override
     public int updateCustomer(customer customer) {

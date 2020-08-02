@@ -27,12 +27,12 @@ public class CustomerController {
         return "add";
     }
 
-    @RequestMapping("/showPage")
+   /* @RequestMapping("/showPage")
     public String showPage(Model model, customer customer,int pageNum,int pageSize) throws Exception {
         HashMap<Object, Object> map = customerService.showPage(customer, pageNum,pageSize);
         model.addAttribute("name", map);
         return "showpage";
-    }
+    }*/
     @RequestMapping("/showPageList")
     public String showPageList(  Model model,customer customer, int pageNum,int pageSize){
 

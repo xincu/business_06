@@ -8,7 +8,7 @@ import java.util.List;
 public interface CustomerService {
     void addBook();
 
-    HashMap<Object, Object> showPage(customer customer, int num, int pageNum);
+  /*  HashMap<Object, Object> showPage(customer customer, int num, int pageNum);*/
 
     int updateCustomer(customer customer);
 
