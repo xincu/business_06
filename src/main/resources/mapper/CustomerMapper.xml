@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mapper.CustomerMapper" >
+<mapper namespace="com.mapper.CustomerMapper">
 
     <resultMap id="baseResultMap" type="com.model.customer">
-        <id  column="cust_id " property="custId" jdbcType="BIGINT"  ></id>
-     <result column="cust_name" property="custName" jdbcType="VARCHAR"></result>
+        <id column="cust_id " property="custId" jdbcType="BIGINT"></id>
+        <result column="cust_name" property="custName" jdbcType="VARCHAR"></result>
         <result column="cust_user_id" property="custUserId" jdbcType="BIGINT"></result>
         <result column="cust_create_id" property="custCreateId" jdbcType="BIGINT"></result>
         <result column="cust_source" property="custSource" jdbcType="VARCHAR"></result>
@@ -24,32 +24,76 @@
     <select id="count" resultType="java.lang.Integer">
         select count(cust_id) from customer
     </select>
-    <select id="selectMany" resultType="com.model.customer" parameterType="object">
-        SELECT  a.`cust_id`, a.`cust_name`, a.`cust_linkman`,
-    a.`cust_phone`,a.`cust_mobile`, a.`cust_zipcode`,
-     a.`cust_address`, a.`cust_createtime`,
-     b.`dict_item_name` AS cust_source,
-     c.`dict_item_name` AS cust_industry,
-      d.`dict_item_name`AS cust_level
-     FROM customer a
-   LEFT JOIN base_dict b ON a.`cust_source`=b.`dict_id`
-    LEFT JOIN base_dict c ON a.`cust_industry`=c.`dict_id`
-    LEFT JOIN base_dict d ON a.`cust_level`=d.`dict_id`
-    <where>
+    <!-- <select id="selectMany" resultType="com.model.customer" parameterType="object">
+         SELECT  a.`cust_id`, a.`cust_name`, a.`cust_linkman`,
+     a.`cust_phone`,a.`cust_mobile`, a.`cust_zipcode`,
+      a.`cust_address`, a.`cust_createtime`,
+      b.`dict_item_name` AS cust_source,
+      c.`dict_item_name` AS cust_industry,
+       d.`dict_item_name`AS cust_level
+      FROM customer a
+    LEFT JOIN base_dict b ON a.`cust_source`=b.`dict_id`
+     LEFT JOIN base_dict c ON a.`cust_industry`=c.`dict_id`
+     LEFT JOIN base_dict d ON a.`cust_level`=d.`dict_id`
+     <where>
+         <if test="custName!=null and custName!=''">
+           and  a.`cust_name` LIKE '%${custName}%'
+         </if>
+         <if test="custSource!=null and custSource!=''">
+            and  a.`cust_source`=#{custSource}
+         </if>
+         <if test="custIndustry!=null and custIndustry!=''">
+             AND a.`cust_industry`=#{custIndustry}
+         </if>
+         <if test="custLevel!=null and custLevel!=''">
+             AND a.`cust_level`= #{custLevel}
+         </if>
+
+     </where>
+             LIMIT #{param5},#{param6}
+     </select>-->
+    <select id="selectMany">
+select * from customer </select>
+    <update id="updateCustomer" parameterType="com.model.customer">
+        UPDATE customer <set>
         <if test="custName!=null and custName!=''">
-          and  a.`cust_name` LIKE '%${custName}%'
+            cust_name=#{custName},
+        </if>
+        <if test="custUserId!=null and custUserId!=''">
+            cust_user_id=#{custUserId},
+        </if>
+        <if test="custCreateId!=null and custCreateId!=''">
+            cust_create_id=#{custCreateId},
         </if>
         <if test="custSource!=null and custSource!=''">
-           and  a.`cust_source`=#{custSource}
+            cust_source=#{custSource},
         </if>
         <if test="custIndustry!=null and custIndustry!=''">
-            AND a.`cust_industry`=#{custIndustry}
+            cust_industry=#{custIndustry},
         </if>
         <if test="custLevel!=null and custLevel!=''">
-            AND a.`cust_level`= #{custLevel}
+            cust_level=#{custLevel},
         </if>
+        <if test="custLinkman!=null and custLinkman!=''">
+            cust_linkman=#{custLinkman},
+        </if>
+        <if test="custPhone!=null and custPhone!=''">
+            cust_phone=#{custPhone},
+        </if>
+        <if test="custMobile!=null and custMobile!=''">
+            cust_mobile=#{custMobile},
+        </if>
+        <if test="custZipcode!=null and custZipcode!=''">
+            cust_zipcode=#{custZipcode},
+        </if>
+        <if test="custAddress!=null and custAddress!=''">
+            cust_address=#{custAddress},
+        </if>
+        <if test="custCreatetime!=null and custCreatetime!=''">
+            cust_createtime=#{custCreatetime}
+        </if>
+    </set>
+        where cust_id=#{custId}
 
-    </where>
-            LIMIT #{param5},#{param6}
-    </select>
+    </update>
 </mapper>

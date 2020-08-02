@@ -24,11 +24,26 @@ public class CustomerController {
         customerService.addBook();
         return "add";
     }
+
     @RequestMapping("/showPage")
-    public  String showPage(Model model,customer customer,@Param("pageNum") Integer pageNum)throws Exception{
-        HashMap<Object,Object> map=customerService.showPage(customer,pageNum);
-        model.addAttribute("name",map);
+    public String showPage(Model model, customer customer, @Param("pageNum") Integer pageNum) throws Exception {
+        HashMap<Object, Object> map = customerService.showPage(customer, pageNum);
+        model.addAttribute("name", map);
         return "showpage";
+    }
+
+    @RequestMapping("updateCustomer")
+    public String updateCustomer(Model model, customer customer) {
+        System.out.println(customer);
+        int num = customerService.updateCustomer(customer);
+
+        if (num > 0) {
+            return "success";
+        } else {
+
+            return "defeated";
+        }
+
     }
 
 }

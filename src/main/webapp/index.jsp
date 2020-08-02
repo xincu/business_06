@@ -32,9 +32,14 @@
 <%--获取用户级别列表--%>
 <%--获取用户所属列表--%>
 
-
-
-
+<form method="post" action="/updateCustomer">
+    <input type="text" name="custId">
+    <input type="text" name="custName">
+    <input type="text" name="custSource">
+    <input type="text" name="custIndustry">
+    <input type="text" name="custLevel">
+<input type="submit">
+</form>>
 
 </body>
 </html>

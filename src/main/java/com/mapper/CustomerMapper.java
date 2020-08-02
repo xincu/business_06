@@ -15,4 +15,6 @@ public interface CustomerMapper {
 
 
     List<customer> selectMany(String custName, String custSource, String custIndustry, String custLevel, int start, int pageSize);
+
+    int updateCustomer(customer customer);
 }

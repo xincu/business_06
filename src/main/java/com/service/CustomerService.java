@@ -8,4 +8,6 @@ public interface CustomerService {
     void addBook();
 
     HashMap<Object, Object> showPage(customer customer, int pageNum);
+
+    int updateCustomer(customer customer);
 }

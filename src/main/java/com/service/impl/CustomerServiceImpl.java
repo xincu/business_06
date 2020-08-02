@@ -52,4 +52,10 @@ public class CustomerServiceImpl implements CustomerService {
         map2.put("pageNum",pageNum);
         return map2;
     }
+
+    @Override
+    public int updateCustomer(customer customer) {
+        int num= customerMapper.updateCustomer(customer);
+        return num;
+    }
 }
