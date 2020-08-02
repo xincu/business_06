@@ -52,7 +52,7 @@
      </where>
              LIMIT #{param5},#{param6}
      </select>-->
-    <select id="selectMany">
+    <select id="selectMany" resultMap="baseResultMap">
 select * from customer </select>
     <update id="updateCustomer" parameterType="com.model.customer">
         UPDATE customer <set>
@@ -94,6 +94,8 @@ select * from customer </select>
         </if>
     </set>
         where cust_id=#{custId}
-
     </update>
+    <delete id="deleteCustomer">
+        delete   from  customer where cust_id=#{custId}
+    </delete>
 </mapper>

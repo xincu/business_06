@@ -40,6 +40,9 @@
     <input type="text" name="custLevel">
 <input type="submit">
 </form>>
-
+<form method="post" action="/deleteCustomer">
+<input type="text" name="custId">
+<input type="submit" value="确认查询">
+</form>
 </body>
 </html>

@@ -43,7 +43,16 @@ public class CustomerController {
 
             return "defeated";
         }
-
     }
+    @RequestMapping("deleteCustomer")
+    public  String deleteCustomer(String custId){
+        int num = customerService.deleteCustomer(custId);
 
+        if (num > 0) {
+            return "success";
+        } else {
+
+            return "defeated";
+        }
+    }
 }

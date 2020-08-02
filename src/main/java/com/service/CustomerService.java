@@ -10,4 +10,6 @@ public interface CustomerService {
     HashMap<Object, Object> showPage(customer customer, int pageNum);
 
     int updateCustomer(customer customer);
+
+    int deleteCustomer(String custId);
 }

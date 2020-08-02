@@ -58,4 +58,10 @@ public class CustomerServiceImpl implements CustomerService {
         int num= customerMapper.updateCustomer(customer);
         return num;
     }
+
+    @Override
+    public int deleteCustomer(String custId) {
+        int num=customerMapper.deleteCustomer(custId);
+        return num;
+    }
 }
