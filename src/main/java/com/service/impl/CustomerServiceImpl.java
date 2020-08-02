@@ -1,5 +1,7 @@
 package com.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.mapper.CustomerMapper;
 import com.model.customer;
 import com.service.CustomerService;
@@ -24,8 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public HashMap<Object, Object> showPage(customer customer, int pageNum) {
-        int  pageSize=10;
+    public HashMap<Object, Object> showPage(customer customer , int pageNum, int pageSize) {
         int customCount =customerMapper.count();
         System.out.println("总记录数："+customCount);
         int maxPage=customCount/pageSize;
@@ -63,5 +64,11 @@ public class CustomerServiceImpl implements CustomerService {
     public int deleteCustomer(String custId) {
         int num=customerMapper.deleteCustomer(custId);
         return num;
+    }
+
+    @Override
+    public List<customer> selectall(customer customer, int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
+        return customerMapper.selectall(customer);
     }
 }

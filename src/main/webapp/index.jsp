@@ -21,12 +21,13 @@
 <form  method="post" action="/list">
     <input type="submit" value="展示来源列表">
 </form>
-<form method="post" action="/showPage">
-    <input type="hidden" name="custName">
+<form method="post" action="/showPageList">
+    <input type="text" name="custName">
     <input type="hidden" name="custSource">
     <input type="hidden" name="custIndustry">
     <input type="hidden" name="custLevel">
-    <input type="text" name="pageName">
+    <input type="text" name="pageNum">
+    <input type="text" name="pageSize">
     <input type="submit" value="确认查询">
 </form>
 <%--获取用户级别列表--%>

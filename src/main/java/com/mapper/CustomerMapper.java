@@ -19,4 +19,6 @@ public interface CustomerMapper {
     int updateCustomer(customer customer);
 
     int deleteCustomer(String custId);
+
+    List<customer> selectall(customer customer);
 }

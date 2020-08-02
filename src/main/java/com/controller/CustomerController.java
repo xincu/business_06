@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.model.customer;
 import com.service.CustomerService;
 
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,10 +28,19 @@ public class CustomerController {
     }
 
     @RequestMapping("/showPage")
-    public String showPage(Model model, customer customer, @Param("pageNum") Integer pageNum) throws Exception {
-        HashMap<Object, Object> map = customerService.showPage(customer, pageNum);
+    public String showPage(Model model, customer customer,int pageNum,int pageSize) throws Exception {
+        HashMap<Object, Object> map = customerService.showPage(customer, pageNum,pageSize);
         model.addAttribute("name", map);
         return "showpage";
+    }
+    @RequestMapping("/showPageList")
+    public String showPageList(  Model model,customer customer, int pageNum,int pageSize){
+
+        List<customer> customerList=customerService.selectall(customer,pageNum,pageSize);
+        PageInfo pageInfo=new PageInfo(customerList);
+        model.addAttribute("name",pageInfo);
+
+        return  "show1";
     }
 
     @RequestMapping("updateCustomer")
